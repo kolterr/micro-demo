@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  consul:
+    image: consul
+    container_name: "micro-demo-consul"
+    volumes:
+      - ./consul:/consul/data
+    ports:
+      - "8500:8500"
+  rabbitmq:
+    image: rabbitmq:management
+    container_name:  "micro-demo-rabbit-mq"
+    hostname: "micro-rabbit"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ./mq:/var/lib/rabbitmq
+#  etcd:
+#    image: quay.io/coreos/etcd
+#    container_name: "micro-etcd"
+#    ports:
+#      - "2379:2379"
+#      - "2380:2380"
+#    volumes:
+#      - ./etcd:/
